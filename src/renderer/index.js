@@ -659,8 +659,8 @@ var Renderer = Base.extend('Renderer', {
 
         var vcOrigin = vci[selection.origin.x] || firstScrollableColumn,
             vrOrigin = vri[selection.origin.y] || firstScrollableRow,
-            vcCorner = vci[selection.corner.x] || (selection.corner.x > lastScrollableColumn.columnIndex ? lastScrollableColumn : vci[fixedColumnCount - 1]),
-            vrCorner = vri[selection.corner.y] || (selection.corner.y > lastScrollableRow.rowIndex ? lastScrollableRow : vri[fixedRowCount - 1]);
+            vcCorner = vci[selection.corner.x] || (lastScrollableColumn && selection.corner.x > lastScrollableColumn.columnIndex ? lastScrollableColumn : vci[fixedColumnCount - 1]),
+            vrCorner = vri[selection.corner.y] || (lastScrollableRow && selection.corner.y > lastScrollableRow.rowIndex ? lastScrollableRow : vri[fixedRowCount - 1]);
 
         if (!(vcOrigin && vrOrigin && vcCorner && vrCorner)) {
             return;
